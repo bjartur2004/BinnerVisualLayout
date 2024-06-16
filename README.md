@@ -9,7 +9,7 @@
 Binner is a free open-source parts inventory tracking system you can run locally in Windows or Unix environments. It was created for makers (like myself), hobbyists or professionals to keep track of your parts inventory.
 This fork adds a page for visually laying out your shelfs and drawrs
 
- ## $${\color{red}Note that this fork is still in development and does not yet have any usable features}$$
+ ## $${\color{red}Note \space that \space this \space fork \space is \space still \space in \space development \space and \space does \space not \space yet \space have \space any \space usable \space features}$$
 
 # Screenshots
 
