@@ -7,6 +7,9 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/gqsaearpptgdn6g8/branch/master?svg=true)](https://ci.appveyor.com/project/MichaelBrown/binner)
 
 Binner is a free open-source parts inventory tracking system you can run locally in Windows or Unix environments. It was created for makers (like myself), hobbyists or professionals to keep track of your parts inventory.
+This fork adds a page for visually laying out your shelfs and drawrs
+
+ ## $${\color{red}Note that this fork is still in development and does not yet have any usable features}$$
 
 # Screenshots
 
@@ -27,18 +30,6 @@ Binner is a free open-source parts inventory tracking system you can run locally
 * Simple web-based UI
 * Barcoding support
 * Label printing
-
-## Planned Upcoming Features for 2024
-- [x] Dedicated datasheet repository (Q1)
-- [x] Schematics repository for example circuits per part (Q1)
-- [x] Local upload of datasheets/images
-- [x] Integration of Arrow's API for orders and parts (Q1)
-- [x] Multiple language support (Q1)
-- [x] Auto update (Q1)
-- [x] Full BOM / PCB management (Q1)
-- [x] TME parts api support
-- [ ] Electronic bins support (Q2)
-- [ ] Maybe a parts marketplace? with lasers?
 
 ## Installation
 
