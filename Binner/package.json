@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-quick-pinch-zoom": "^5.1.0",
+    "react-zoom-pan-pinch": "^3.4.4"
+  }
+}

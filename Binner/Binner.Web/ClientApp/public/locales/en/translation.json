@@ -4,6 +4,7 @@
       "title": "Dashboard",
       "description": "Binner is an inventory management app for makers, hobbyists and professionals.",
       "addInventory": "Add Inventory",
+      "layoutView": "Layout View",
       "searchInventory": "Search Inventory",
       "bom": "BOM",
       "datasheets": "Datasheets",

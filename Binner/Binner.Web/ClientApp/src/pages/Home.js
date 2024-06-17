@@ -17,6 +17,7 @@ export function Home(props) {
   const [newVersionBannerIsOpen, setNewVersionBannerIsOpen] = useState(false);
   const [version, setVersion] = useState(null);
 
+
   /**
    * Fetch the latest Binner version from GitHub
    */
@@ -87,12 +88,18 @@ export function Home(props) {
         <h1>{t('page.home.title', "Dashboard")}</h1>
         <p>{t('page.home.description', "Binner is an inventory management app for makers, hobbyists and professionals.")}</p>
         <Segment className="dashboard">
-          <Statistic.Group widths="four">
+          <Statistic.Group widths="five">
             <Statistic onClick={(e) => route(e, "/inventory/add")} style={{ cursor: "pointer" }}>
               <Statistic.Value>
                 <Icon name="plus" />
               </Statistic.Value>
               <Statistic.Label>{t('page.home.addInventory', "Add Inventory")}</Statistic.Label>
+            </Statistic>
+            <Statistic onClick={(e) => route(e, "/layoutView")} style={{ cursor: "pointer" }}>
+                <Statistic.Value>
+                  <Icon name="block layout" />
+                </Statistic.Value>
+                <Statistic.Label>{t('page.home.layoutView', "Layout View")}</Statistic.Label>
             </Statistic>
             <Statistic onClick={(e) => route(e, "/inventory")} style={{ cursor: "pointer" }}>
               <Statistic.Value>

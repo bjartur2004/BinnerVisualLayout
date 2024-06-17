@@ -47,6 +47,7 @@ import { Help } from "./pages/help/Home";
 import { Scanning } from "./pages/help/Scanning";
 import { ApiIntegrations } from "./pages/help/ApiIntegrations";
 import { BOM } from "./pages/help/BOM";
+import { LayoutView } from "./pages/LayoutView";
 
 // admin
 import { Users } from "./pages/admin/users/Users";
@@ -190,6 +191,7 @@ export const App = (props) => {
           <Route path="/help/scanning" element={<PageWrapper><Scanning /></PageWrapper>} />
           <Route path="/help/api-integrations" element={<PageWrapper><ApiIntegrations /></PageWrapper>} />
           <Route path="/help/bom" element={<PageWrapper><BOM /></PageWrapper>} />
+          <Route path="/layoutview" element={<PageWrapper><LayoutView /></PageWrapper>} />
 
           {/* admin */}
 
