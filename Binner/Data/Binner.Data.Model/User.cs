@@ -157,6 +157,8 @@ namespace Binner.Data.Model
 
         public ICollection<UserPrinterTemplateConfiguration>? UserPrinterTemplateConfigurations { get; set; }
 
+        public ICollection<Container>? Containers { get; set; }
+
     }
 #endif
 }

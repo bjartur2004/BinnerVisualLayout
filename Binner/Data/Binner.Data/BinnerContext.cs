@@ -87,6 +87,11 @@ namespace Binner.Data
         /// </summary>
         public DbSet<Organization> Organizations { get; set; } = null!;
 
+        /// <summary>
+        /// Containers
+        /// </summary>
+        public DbSet<Container> Containers { get; set; } = null!;
+
 #if INITIALCREATE
         /// <summary>
         /// Users

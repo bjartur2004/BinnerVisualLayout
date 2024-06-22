@@ -1,12 +1,19 @@
-
 .layoutView {
+	height: 55vh;
+}
 
+.layoutViewPane {
+	padding: 0 !important;
+	height: 100%;
+	display: flex;
+	
 }
 
 .layoutCanvas {
-
+	width: fit-content;
 }
 
-.content {
-	width:fit-content;
+
+div:has(.layoutCanvas) {
+	width:100%;
 }

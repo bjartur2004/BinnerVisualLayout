@@ -542,5 +542,14 @@ namespace Binner.Model
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<bool> DeletePartSupplierAsync(PartSupplier partSupplier, IUserContext? userContext);
+
+        /// <summary>
+        /// Add a new container
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<Container> AddContainerAsync(Container container, IUserContext? userContext);
+
     }
 }

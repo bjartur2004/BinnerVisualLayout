@@ -340,6 +340,30 @@ namespace Binner.Data.Migrations.Sqlite.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Containers",
+                schema: "dbo",
+                columns: table => new
+                {
+                    ContainerId = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: true),
+                    ParentContainerId = table.Column<long>(type: "INTEGER", nullable: true),
+                    Label = table.Column<string>(type: "TEXT", nullable: true),
+                    DateCreatedUtc = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "getutcdate()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Containers", x => x.ContainerId);
+                    table.ForeignKey(
+                        name: "FK_Containers_Containers_ParentContainerId",
+                        column: x => x.ParentContainerId,
+                        principalSchema: "dbo",
+                        principalTable: "Containers",
+                        principalColumn: "ContainerId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Parts_BinNumber_UserId",
                 schema: "dbo",

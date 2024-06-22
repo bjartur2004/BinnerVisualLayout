@@ -1525,6 +1525,18 @@ INNER JOIN (
             return true;
         }
 
+        public async Task<Container> AddContainerAsync(Container container, IUserContext? userContext)
+        {
+            if (userContext == null) throw new ArgumentNullException(nameof(userContext));
+            await using var context = await _contextFactory.CreateDbContextAsync();
+            var entity = _mapper.Map<DataModel.Container>(container);
+            EnforceIntegrityCreate(entity, userContext);
+            context.Containers.Add(entity);
+            await context.SaveChangesAsync();
+            container.ContainerId = entity.ContainerId;
+            return container;
+        }
+
 
 
         public void EnforceIntegrityCreate<T>(T entity, IUserContext userContext)
