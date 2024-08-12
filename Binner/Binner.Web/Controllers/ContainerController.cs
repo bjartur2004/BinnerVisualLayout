@@ -51,10 +51,11 @@ namespace Binner.Web.Controllers
                 value: containerResponse);
         }
 
-        [HttpGet]
-        public IActionResult GetContainer(GetContainerRequest request)
+        [HttpGet("all")]
+        public async Task<IActionResult> GetContainer()
         {
-            return Ok(request);
+            var containers = await _containerService.GetContainersAsync();
+            return Ok(containers);
         }
 
         [HttpPut]

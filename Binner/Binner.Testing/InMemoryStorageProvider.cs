@@ -18,6 +18,7 @@ namespace Binner.Testing
         private readonly Dictionary<long, PcbStoredFileAssignment> _pcbStoredFileAssignments = new();
         private readonly Dictionary<long, PartSupplier> _partSuppliers = new();
         private readonly Dictionary<long, User> _users = new();
+        private readonly Dictionary<long, Container> _containers = new();
 
         public InMemoryStorageProvider(bool createEmpty = false)
         {
@@ -429,6 +430,11 @@ namespace Binner.Testing
             _pcbStoredFileAssignments.Clear();
             _partSuppliers.Clear();
             _users.Clear();
+        }
+
+        public Task<Container> AddContainerAsync(Container container, IUserContext? userContext)
+        {
+            throw new NotImplementedException();
         }
     }
 }

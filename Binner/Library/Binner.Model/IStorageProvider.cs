@@ -551,5 +551,14 @@ namespace Binner.Model
         /// <returns></returns>
         Task<Container> AddContainerAsync(Container container, IUserContext? userContext);
 
+
+
+        /// <summary>
+        /// Get all Containers
+        /// </summary>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<ICollection<Container>> GetContainersAsync(IUserContext? userContext);
+        
     }
 }

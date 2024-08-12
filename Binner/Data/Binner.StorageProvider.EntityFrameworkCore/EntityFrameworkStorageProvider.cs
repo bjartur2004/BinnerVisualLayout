@@ -1537,7 +1537,23 @@ INNER JOIN (
             return container;
         }
 
+        /*        private async Task<ICollection<Part>> GetPartsAsync(IUserContext userContext)
+        {
+            await using var context = await _contextFactory.CreateDbContextAsync();
+            var entities = await context.Parts
+                .Where(x => x.OrganizationId == userContext.OrganizationId)
+                .ToListAsync();
+            return _mapper.Map<ICollection<Part>>(entities);
+        }*/
 
+        public async Task<ICollection<Container>> GetContainersAsync(IUserContext userContext)
+        {
+            await using var context = await _contextFactory.CreateDbContextAsync();
+            var entities = await context.Containers
+                .Where(x => x.OrganizationId == userContext.OrganizationId)
+                .ToListAsync();
+            return _mapper.Map<ICollection<Container>>(entities);
+        }
 
         public void EnforceIntegrityCreate<T>(T entity, IUserContext userContext)
             where T : DataModel.IEntity, DataModel.IUserData

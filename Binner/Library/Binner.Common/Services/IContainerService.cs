@@ -13,5 +13,12 @@ namespace Binner.Common.Services
         /// <returns></returns>
         Task<Container?> AddContainerAsync(Container container);
 
+
+        /// <summary>
+        /// Get all Containers
+        /// </summary>
+        /// <returns></returns>
+        Task<ICollection<Container>> GetContainersAsync();
+
     }
 }

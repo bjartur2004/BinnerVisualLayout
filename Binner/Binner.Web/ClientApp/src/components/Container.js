@@ -1,35 +1,94 @@
-import React, { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import { divide } from "lodash";
+import React, { useState, useMemo, useEffect, useLayoutEffect, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 
 export const Container = (props) => {
 
-    const [container, setContainer] = useState();
-    const [containerInnitComplete, setContainerInnitComplete] = useState(props.partInnitComplete);
+    const [container, setContainer] = useState(null);
+    const [scale, setScale] = useState(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [size, setSize] = useState({ width: 200, height: 200 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [isResizing, setIsResizing] = useState(false);
 
+    const componentRef = useRef(null);
 
     const { t } = useTranslation();
 
+    const handleMouseDownDrag = (e) => {
+        e.stopPropagation();
+        setIsDragging(true);
+        componentRef.current = {
+            startX: e.clientX - position.x,
+            startY: e.clientY - position.y,
+        };
+    };
+
+    const handleMouseDownResize = (e) => {
+        setIsResizing(true);
+        componentRef.current = {
+            startX: e.clientX,
+            startY: e.clientY,
+            startWidth: size.width,
+            startHeight: size.height,
+        };
+    };
+
+    const handleMouseMove = (e) => {
+        e.stopPropagation();
+        if (isDragging) {
+            setPosition({
+                x: (e.clientX - componentRef.current.startX) * 1/scale,
+                y: (e.clientY - componentRef.current.startY) * 1/scale,
+            });
+            console.log(position.x, e.clientX, componentRef.current.startX, e.clientX - componentRef.current.startX);
+
+        }
+        if (isResizing) {
+            setSize({
+                width: componentRef.current.startWidth + (e.clientX - componentRef.current.startX) * 1/scale,
+                height: componentRef.current.startHeight + (e.clientY - componentRef.current.startY) * 1/scale,
+            });
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+        setIsResizing(false);
+    };
+
     const renderContainer = useMemo(() => {
-        if (containerInnitComplete === true || container) {
-            console.log(props);
+        //console.log(container);
+        if (container) {
 
             return (
                 // render populated container
-                <p>{container.label}</p>
+                <div className="ContainerBody"
+                    style={{
+                        width: size.width,
+                        height: size.height,
+                        transform: `translate(${position.x}px, ${position.y}px)`,
+                    }}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}
+                >
+                    <div className="drag-bar" onMouseDown={handleMouseDownDrag}></div>
+                    <div className="resize-handle" onMouseDown={handleMouseDownResize}></div>
+                </div>
             );
         } else {
-            if (containerInnitComplete === true && !container) {console.error("container property undefined");}
-
-            // render unpopulated container
-            return <p>part</p>;
+            return <p>undefined container</p>;
         }
 
     });
 
-    useEffect(() => {
+    useMemo(() => {
         setContainer(props.container);
     }, [props.container]);
-
+    useMemo(() => {
+        setScale(props.scale);
+    }, [props.scale]);
 
     return (
         <>

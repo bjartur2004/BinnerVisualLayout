@@ -22,5 +22,10 @@ namespace Binner.Common.Services
         {
             return await _storageProvider.AddContainerAsync(container, _requestContext.GetUserContext());
         }
+
+        public async Task<ICollection<Container>> GetContainersAsync()
+        {
+            return await _storageProvider.GetContainersAsync(_requestContext.GetUserContext());
+        }
     }
 }
